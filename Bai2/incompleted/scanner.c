@@ -65,10 +65,9 @@ Token* readIdentKeyword(void)
     {
         if(i<= MAX_IDENT_LEN)
             token->string[i++] = toupper((char)currentChar);
-        else
-        {
-            readChar();
-        }
+       
+        readChar();
+        
     }
     token->string[i]='\0';
     if(i>MAX_IDENT_LEN)
@@ -134,7 +133,7 @@ Token* readConstChar(void)
 Token* getToken(void)
 {
     Token *token;
-    int ln, cn;
+    // int ln, cn;
 
     if (currentChar == EOF)
         return makeToken(TK_EOF, lineNo, colNo);
@@ -240,6 +239,10 @@ Token* getToken(void)
             getToken();
         }
         return token;
+    case CHAR_RPAR:
+      token = makeToken(SB_LPAR, lineNo, colNo);
+      readChar();
+      return token;
     default:
         token = makeToken(TK_NONE, lineNo, colNo);
         error(ERR_INVALIDSYMBOL, lineNo, colNo);
