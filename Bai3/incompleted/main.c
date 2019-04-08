@@ -13,7 +13,7 @@
 /******************************************************************/
 
 int main(int argc, char *argv[]) {
-  if (argc <= 1) {
+  if (argc < 1) {
     printf("parser: no input file.\n");
     return -1;
   }
@@ -22,6 +22,15 @@ int main(int argc, char *argv[]) {
     printf("Can\'t read input file!\n");
     return -1;
   }
-    
+  /* getch(); */
   return 0;
+
 }
+/*int main() {
+    
+   char  s[100]="C:\\example1.kpl";
+    compile(s);
+    getch();
+    return 0;
+}
+*/
